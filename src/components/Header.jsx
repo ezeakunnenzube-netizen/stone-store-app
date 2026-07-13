@@ -1,4 +1,4 @@
-import { NavLink, useNavigate, useSearchParams } from "react-router-dom"
+import { NavLink, useNavigate, useSearchParams, useLocation } from "react-router-dom"
 import "./Header.css"
 import { Mail, Phone, Search, ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext';
 function Header(){
   const { setIsCartOpen, cartCount } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const searchQuery = searchParams.get('q') || '';
@@ -66,10 +67,8 @@ function Header(){
                       onClick={() => {
                         const q = (searchQuery || '').trim();
                         if (q) {
-                          setSearchParams({ q });
-                          navigate('/search');
+                          navigate(`/products?q=${encodeURIComponent(q)}`);
                         } else {
-                          setSearchParams({});
                           navigate('/products');
                         }
                       }}
@@ -83,12 +82,18 @@ function Header(){
                       value={searchQuery}
                       onChange={(e) => {
                         const value = e.target.value;
-                        // Just keep the "q" query param in sync as the user types.
-                        // Pages showing a product grid (e.g. Products) read this
-                        // param and filter live, without navigating away.
+                        const onProductsPage = location.pathname === '/products';
                         if (value) {
-                          setSearchParams({ q: value }, { replace: true });
-                        } else {
+                          if (onProductsPage) {
+                            // Already viewing products: just keep the "q" query
+                            // param in sync so the grid filters live in place.
+                            setSearchParams({ q: value }, { replace: true });
+                          } else {
+                            // Typing from any other page: jump straight to the
+                            // Products page with the filter already applied.
+                            navigate(`/products?q=${encodeURIComponent(value)}`);
+                          }
+                        } else if (onProductsPage) {
                           setSearchParams({}, { replace: true });
                         }
                       }}
@@ -96,8 +101,7 @@ function Header(){
                         if (e.key === 'Enter') {
                           const q = (searchQuery || '').trim();
                           if (q) {
-                            setSearchParams({ q });
-                            navigate('/search');
+                            navigate(`/products?q=${encodeURIComponent(q)}`);
                           }
                         }
                       }}
