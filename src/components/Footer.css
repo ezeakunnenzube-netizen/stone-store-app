@@ -1,0 +1,203 @@
+/* ==========================================================================
+   FOOTER — PREMIUM LUXURY EDITION
+   Deep Obsidian | Champagne Gold | Editorial Typography
+   ========================================================================== */
+
+.footer {
+  background-color: var(--obsidian);
+  color: var(--text-on-dark);
+  font-family: var(--font-sans);
+}
+
+/* --------------------------------------------------------------------------
+   MAIN FOOTER BODY
+   -------------------------------------------------------------------------- */
+.home-last-section {
+  background-color: var(--obsidian);
+  border-top: 1px solid var(--border-dark);
+}
+
+.text-boxes {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 96px 5vw 80px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 56px;
+}
+
+/* --------------------------------------------------------------------------
+   COLUMN 1 — BRAND
+   -------------------------------------------------------------------------- */
+.text-box1 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo-div-text {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* In footer, the logo appears on dark so we invert it to white */
+.logo-div img {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.logo-text-footer {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.text-box1-paragraph {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 270px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   COLUMNS 2 & 3 — LINK LISTS
+   -------------------------------------------------------------------------- */
+.text-box-title {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+
+.text-box2-paragraph,
+.text-box3-paragraph {
+  font-size: 13px;
+  font-weight: 300;
+  color: #8a8784;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.text-box2-paragraph::before,
+.text-box3-paragraph::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: var(--transition-mid);
+  margin-right: 0;
+  vertical-align: middle;
+}
+
+.text-box2-paragraph:hover,
+.text-box3-paragraph:hover {
+  color: var(--gold-bright);
+  transform: translateX(6px);
+}
+
+.text-box2-paragraph:hover::before,
+.text-box3-paragraph:hover::before {
+  width: 12px;
+  margin-right: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   COLUMN 4 — VISIT US
+   -------------------------------------------------------------------------- */
+.text-box4 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.address,
+.time {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.address-icon,
+.clock-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 15px;
+  height: 15px;
+  opacity: 0.85;
+}
+
+.contact-address-line,
+.monday-to-friday {
+  font-size: 13px;
+  color: #8a8784;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------
+   DIVIDER & COPYRIGHT
+   -------------------------------------------------------------------------- */
+.section-divider-div {
+  padding: 0 5vw;
+  background-color: var(--obsidian);
+}
+
+.section-divider {
+  margin: 0 auto;
+  max-width: 1400px;
+  border: none;
+  border-top: 1px solid rgba(201, 168, 76, 0.08);
+  height: 0;
+}
+
+.footer-paragraph {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #3a3836;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 5vw;
+  background-color: var(--obsidian);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .text-boxes {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .text-boxes {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 64px 5vw;
+  }
+  .text-box1-paragraph {
+    max-width: 100%;
+  }
+}

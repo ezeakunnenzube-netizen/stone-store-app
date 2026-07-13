@@ -1,0 +1,400 @@
+
+.store-layout-container {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color:white;
+  color:black;
+}
+
+/* Utilities Line Bar */
+.top-utility-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 11px;
+  color: #71717a;
+  border-bottom: 1px solid #f4f4f5;
+}
+.utility-right span {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/* Application Navbar */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid #e4e4e7;
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+.navbar-links {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.navbar-links span {
+  cursor: pointer;
+  color: #52525b;
+}
+.navbar-links .active-link {
+  color: #111111;
+  font-weight: 700;
+}
+.navbar-actions {
+  display: flex;
+  gap: 20px;
+}
+.action-icon {
+  cursor: pointer;
+  color: #27272a;
+}
+
+/* Main Layout Split Framework */
+.catalog-layout-split{
+  display: flex;
+  gap: 48px;
+}
+
+/* Sidebar Styling Controls */
+.filter-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  margin-top:20px;
+}
+.filter-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter-header-row h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+.clear-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #a1a1aa;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.results-subtext {
+  font-size: 12px;
+  color: #71717a;
+  margin: 6px 0 24px 0;
+}
+.filter-group {
+  border-bottom: 1px solid #f4f4f5;
+  padding: 16px 0;
+}
+.group-trigger {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.group-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #4b5563;
+  cursor: pointer;
+}
+.checkbox-row input {
+  accent-color: #111111;
+}
+
+/* Color Swatches Grid */
+.color-swatch-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.swatch-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #e4e4e7;
+  cursor: pointer;
+}
+.selected-swatch {
+  outline: 2px solid #111111;
+  outline-offset: 2px;
+}
+
+/* Price Range Inputs */
+.slider-wrapper input {
+  width: 100%;
+  accent-color: #111111;
+}
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #71717a;
+  margin-top: 4px;
+}
+
+/* Callout Trade Card Box */
+.trade-card-box {
+  background-color: #f7fee7;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 32px;
+}
+.trade-card-box h4 {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin: 0 0 6px 0;
+}
+.trade-card-box p {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+.trade-action-btn {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Main Display Controls Header */
+.catalog-feed-main {
+  flex-grow: 1;
+}
+.feed-control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.layout-modes {
+  display: flex;
+  gap: 12px;
+  color: #a1a1aa;
+}
+.mode-toggle {
+  cursor: pointer;
+}
+.active-mode {
+  color: #111111;
+}
+.sorting-dropdown-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.sorting-dropdown-box select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   REFACTORED WRAPPER DESIGN USING FLEXBOX LAYOUTS EXCLUSIVELY
+   ========================================================================== */
+.product-flex-row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 20px; /* 32px Vertical row gap, 20px Horizontal spacing elements */
+  width: 100%;
+}
+
+.catalog-product-card {
+  display: flex;
+  flex-direction: column;
+  /* Calculation calculates a 3 column split framework safely subtracting horizontal margins */
+  flex: 0 0 calc((100% - 40px) / 3);
+  box-sizing: border-box;
+  
+}
+
+.card-media-wrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f4f4f5;
+  margin-bottom: 12px;
+  border:3px solid rgb(196, 167, 1);
+}
+.card-media-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  z-index: 5;
+}
+.blue-badge {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+.white-badge {
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid #e4e4e7;
+}
+
+.card-details h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+}
+.details-origin {
+  font-size: 11px;
+  color: #a1a1aa;
+  margin: 0 0 6px 0;
+}
+.details-pricing {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+.details-pricing span {
+  font-size: 11px;
+  font-weight: 400;
+  color: #71717a;
+}
+
+/* Footer Strip Control Pagination */
+.pagination-footer-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #f4f4f5;
+}
+.p-nav-btn {
+  background: none;
+  border: 1px solid #e4e4e7;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.p-nav-btn:disabled {
+  color: #d4d4d8;
+  cursor: not-allowed;
+}
+.p-num-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #71717a;
+}
+.p-active {
+  background-color: #f4f4f5;
+  color: #111111;
+  font-weight: 700;
+}
+.catalog-page-wrapper{
+  background-color:white;
+  padding: 20px 0;
+}
+
+.search-results-header {
+  margin-bottom: 30px;
+}
+
+.search-results-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.search-results-header h1 span {
+  color: #2563eb;
+}
+
+.search-results-header p {
+  color: #71717a;
+  margin: 4px 0 0 0;
+}
+
+.empty-state {
+  padding: 40px 0;
+  text-align: center;
+  color: #71717a;
+}
+/* ==========================================================================
+   RESPONSIVE VIEWPORT INSTRUCTIONS FOR MEDIA HANDLING
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* Shifts seamlessly into a two-column distribution on midsize templates */
+  .catalog-product-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+  
+  .search-results-header h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Safely unwraps sidebar splits on mobile devices into a single stream column stack layout */
+  .catalog-layout-split {
+    flex-direction: column;
+  }
+  .filter-sidebar {
+    width: 100%;
+  }
+  .catalog-product-card {
+    flex: 0 0 100%;
+  }
+  
+  .search-results-header h1 {
+    font-size: 20px;
+  }
+  
+  .catalog-page-wrapper {
+    padding: 10px 0;
+  }
+  
+  .store-layout-container {
+    padding: 0 10px;
+  }
+}

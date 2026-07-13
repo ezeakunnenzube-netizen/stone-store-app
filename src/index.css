@@ -1,0 +1,126 @@
+/* ==========================================================================
+   STONE'S STORE — GLOBAL DESIGN SYSTEM
+   Premium Luxury Edition
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DESIGN TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* Gold Palette */
+  --gold:           #c9a84c;
+  --gold-bright:    #e0c06a;
+  --gold-muted:     #a8874a;
+  --gold-light:     rgba(201, 168, 76, 0.10);
+  --gold-glow:      rgba(201, 168, 76, 0.20);
+
+  /* Dark Palette */
+  --obsidian:       #08080a;
+  --charcoal:       #101012;
+  --charcoal-mid:   #18181b;
+  --charcoal-soft:  #27272a;
+
+  /* Light Palette */
+  --alabaster:      #f7f5f0;
+  --ivory:          #fefcf6;
+  --pearl:          #f0ede6;
+
+  /* Text */
+  --text-primary:   #1a1918;
+  --text-secondary: #4a4744;
+  --text-muted:     #7a7672;
+  --text-on-dark:   #e8e6e0;
+  --text-gold:      var(--gold);
+
+  /* Typography */
+  --font-serif:     'Cormorant Garamond', 'Garamond', 'Georgia', serif;
+  --font-display:   'Playfair Display', 'Didot', 'Georgia', serif;
+  --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Borders */
+  --border-light:   rgba(201, 168, 76, 0.15);
+  --border-mid:     rgba(201, 168, 76, 0.30);
+  --border-dark:    rgba(201, 168, 76, 0.08);
+
+  /* Shadows */
+  --shadow-sm:      0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md:      0 8px 32px rgba(0, 0, 0, 0.10);
+  --shadow-lg:      0 24px 64px rgba(0, 0, 0, 0.16);
+  --shadow-gold:    0 8px 32px rgba(201, 168, 76, 0.12);
+
+  /* Transitions */
+  --ease-luxury:    cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast:  all 0.2s var(--ease-luxury);
+  --transition-mid:   all 0.4s var(--ease-luxury);
+  --transition-slow:  all 0.6s var(--ease-luxury);
+}
+
+/* --------------------------------------------------------------------------
+   RESET & BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--alabaster);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   CUSTOM SCROLLBAR (Webkit)
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* --------------------------------------------------------------------------
+   APP CONTAINER
+   -------------------------------------------------------------------------- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

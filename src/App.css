@@ -1,0 +1,10 @@
+body{
+  background-color:rgb(247, 245, 245);
+  
+}
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}

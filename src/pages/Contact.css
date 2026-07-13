@@ -1,0 +1,502 @@
+/* ==========================================================================
+   CONTACT PAGE — PREMIUM LUXURY EDITION
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PAGE CONTAINER
+   -------------------------------------------------------------------------- */
+.contact-page-container {
+  width: 100%;
+  background-color: var(--alabaster);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  padding-top: 110px; /* Clears the fixed two-row header */
+}
+
+/* --------------------------------------------------------------------------
+   HERO BANNER
+   -------------------------------------------------------------------------- */
+.discuss-project-section {
+  background-color: var(--charcoal);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 96px 5vw 80px;
+}
+
+.discuss-project {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Eyebrow label */
+.discuss-project::before {
+  content: 'GET IN TOUCH';
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.discuss-project-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  line-height: 1.1;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+
+/* Animated gold underline on heading */
+.discuss-project-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.discuss-project-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  color: #6a6866;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  max-width: 560px;
+  margin: 16px 0 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   GRID LAYOUT
+   -------------------------------------------------------------------------- */
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: start;
+  padding: 80px 5vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   FORM SECTION
+   -------------------------------------------------------------------------- */
+.inquiry-form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-main-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+}
+
+.form-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin: 0 0 48px 0;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-row-twin {
+  display: flex;
+  gap: 32px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.form-group.full-width {
+  width: 100%;
+}
+
+/* Labels — ultra-small gold caps */
+.form-group label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.optional-text {
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* Inputs — bottom-border only, clean & minimal */
+.form-group input,
+.form-group textarea {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(26, 25, 24, 0.18);
+  outline: none;
+  color: var(--text-primary);
+  transition: var(--transition-mid);
+  letter-spacing: 0.02em;
+  border-radius: 0;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #bbb9b4;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--gold);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Upload Dropzone */
+.upload-dropzone {
+  border: 1px dashed rgba(201, 168, 76, 0.35);
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background: transparent;
+  transition: var(--transition-mid);
+}
+
+.upload-dropzone:hover {
+  border-color: var(--gold);
+  background: var(--gold-light);
+}
+
+.upload-icon {
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  transition: var(--transition-mid);
+}
+
+.upload-dropzone:hover .upload-icon {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.upload-main-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 6px 0;
+  letter-spacing: 0.02em;
+  transition: var(--transition-fast);
+}
+
+.upload-sub-text {
+  font-size: 11px;
+  color: #bbb9b4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Submit Button */
+.form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--gold);
+  color: var(--obsidian);
+  border: 1px solid var(--gold);
+  padding: 18px 32px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-mid);
+}
+
+.form-submit-btn:hover {
+  background: var(--gold-bright);
+  border-color: var(--gold-bright);
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
+  transform: translateY(-2px);
+}
+
+.form-submit-btn:active {
+  transform: scale(0.99) translateY(0);
+}
+
+.privacy-notice-text {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.privacy-notice-text a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.privacy-notice-text a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBAR
+   -------------------------------------------------------------------------- */
+.contact-sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: sticky;
+  top: 120px;
+}
+
+/* Sidebar Card — dark charcoal */
+.sidebar-card {
+  background: var(--charcoal);
+  border: 1px solid var(--border-dark);
+  border-top: 2px solid var(--gold);
+  padding: 36px 32px;
+}
+
+.sidebar-card h2 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin: 0 0 28px 0;
+}
+
+.info-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.info-item.alignment-top {
+  align-items: flex-start;
+}
+
+/* Gold circular icon wrappers */
+.icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  border: 1px solid var(--border-mid);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.info-item:hover .icon-wrapper {
+  background: var(--gold);
+  color: var(--obsidian);
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.info-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.info-text strong {
+  color: #e8e6e0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.info-text address {
+  font-style: normal;
+  color: #8a8784;
+  font-weight: 300;
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  row-gap: 5px;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.hours-grid .day {
+  color: #6a6866;
+  font-weight: 300;
+}
+
+.hours-grid .time {
+  color: #c0beba;
+  font-weight: 400;
+}
+
+.hours-grid .closed-status {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* "Find Us" Section */
+.sidebar-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.block-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.block-header-row h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.maps-link-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: var(--transition-fast);
+}
+
+.maps-link-action:hover {
+  color: var(--gold-bright);
+}
+
+.map-media-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.map-media-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-luxury);
+  filter: grayscale(30%) brightness(0.9);
+}
+
+.map-media-wrapper:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(1);
+}
+
+.showroom-pill-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: var(--gold);
+  color: var(--obsidian);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 64px 5vw;
+  }
+  .contact-sidebar-section {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .form-row-twin {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .discuss-project-section {
+    padding: 80px 5vw 64px;
+  }
+}

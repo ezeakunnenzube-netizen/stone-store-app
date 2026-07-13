@@ -1,0 +1,633 @@
+/* ==========================================================================
+   HOME PAGE — PREMIUM LUXURY EDITION
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PAGE WRAPPER
+   -------------------------------------------------------------------------- */
+.home-page {
+  width: 100%;
+  background-color: var(--alabaster);
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION — Full-Viewport Cinematic
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Dark gradient overlay for editorial contrast */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(8, 8, 10, 0.72) 0%,
+    rgba(8, 8, 10, 0.45) 50%,
+    rgba(8, 8, 10, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* Hairline gold bottom border */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  z-index: 2;
+}
+
+.hero-text-boxes {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  animation: heroFadeIn 1.4s var(--ease-luxury) both;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pre-title label */
+.hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+/* Main headline */
+.hero-text-box1 {
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-bottom: 32px;
+  max-width: 900px;
+}
+
+/* Thin gold divider under headline */
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 28px;
+  animation: dividerExpand 1s 0.8s var(--ease-luxury) both;
+}
+
+@keyframes dividerExpand {
+  from { width: 0; opacity: 0; }
+  to   { width: 60px; opacity: 1; }
+}
+
+/* Sub-headline */
+.hero-text-box2 {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 48px;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* Tagline italic */
+.hero-text-box3 {
+  font-family: var(--font-serif);
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
+  margin-bottom: 52px;
+}
+
+/* Hero CTA Buttons */
+.hero-cta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.hero-cta-primary {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--obsidian);
+  background: var(--gold);
+  padding: 16px 40px;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  transition: var(--transition-mid);
+  text-decoration: none;
+}
+
+.hero-cta-primary:hover {
+  background: var(--gold-bright);
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.35);
+  transform: translateY(-2px);
+}
+
+.hero-cta-secondary {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  padding: 16px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: var(--transition-mid);
+  text-decoration: none;
+}
+
+.hero-cta-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* --------------------------------------------------------------------------
+   CURATED COLLECTIONS
+   -------------------------------------------------------------------------- */
+.curated-collections {
+  background-color: var(--alabaster);
+  padding: 100px 5vw;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.curated-collections-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+
+.curated-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Section eyebrow */
+.curated-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.curated-texts-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.curated-texts-paragraph {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 420px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* "View All" button */
+.categories-btn-div a {
+  text-decoration: none;
+}
+
+.categories-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid rgba(26, 25, 24, 0.3);
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: var(--transition-mid);
+  white-space: nowrap;
+}
+
+.categories-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--obsidian);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-1px);
+}
+
+.categories-btn-arrow {
+  transition: var(--transition-mid);
+}
+
+.categories-btn:hover .categories-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Collection Cards Grid */
+.curated-collections-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.curated-collections-image {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--border-light);
+}
+
+.curated-collections-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s var(--ease-luxury);
+  filter: brightness(0.88);
+}
+
+.curated-collections-image:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.75);
+}
+
+/* Card text overlay — slides up on hover */
+.curated-collections-image-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 28px;
+  background: linear-gradient(to top, rgba(8, 8, 10, 0.9) 0%, transparent 100%);
+  transform: translateY(8px);
+  transition: var(--transition-mid);
+}
+
+.curated-collections-image:hover .curated-collections-image-text {
+  transform: translateY(0);
+}
+
+/* Gold top accent line on cards */
+.curated-collections-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-luxury);
+}
+
+.curated-collections-image:hover::before {
+  transform: scaleX(1);
+}
+
+.curated-collections-image-unit {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 6px 0;
+}
+
+.curated-collections-image-name {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   COMPANY FEATURES — Dark Strip
+   -------------------------------------------------------------------------- */
+.company-features {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--charcoal);
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.company-feature {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 72px 48px;
+  position: relative;
+  transition: var(--transition-mid);
+}
+
+/* Vertical separator lines between features */
+.company-feature + .company-feature::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 1px;
+  background: var(--border-dark);
+}
+
+.company-feature:hover {
+  background: rgba(201, 168, 76, 0.03);
+}
+
+.feature-icon {
+  color: var(--gold);
+  margin-bottom: 24px;
+  transition: var(--transition-mid);
+}
+
+.company-feature:hover .feature-icon {
+  transform: translateY(-4px);
+}
+
+.company-feature-textbox1 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.company-feature-textbox2 {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: #6a6866;
+  line-height: 1.75;
+  max-width: 240px;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   TILE CALCULATOR — Obsidian Panel
+   -------------------------------------------------------------------------- */
+.tiles-calculator-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 5vw;
+  background-color: var(--obsidian);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.calculator-and-description {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 960px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Left: Description */
+.calculator-description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calculator-desc-textbox1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border-mid);
+  padding: 8px 16px;
+  width: fit-content;
+  border-radius: 0;
+}
+
+.calculator-desc-textbox2 {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.calculator-desc-textbox3 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: #6a6866;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+
+.launch-calculator-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--obsidian);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 16px 36px;
+  cursor: pointer;
+  transition: var(--transition-mid);
+  width: fit-content;
+}
+
+.launch-calculator-button:hover {
+  background: var(--gold-bright);
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
+  transform: translateY(-2px);
+}
+
+.launch-calculator-button:active {
+  transform: scale(0.98) translateY(0);
+}
+
+/* Right: Calculator Widget */
+.tiles-calculator {
+  background: var(--charcoal-mid);
+  border: 1px solid var(--border-light);
+  padding: 40px;
+}
+
+.calculator-input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-dark);
+  margin-bottom: 24px;
+}
+
+.calculator-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calculator-input-field label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.calculator-input-element {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--charcoal-soft);
+  color: #ffffff;
+  padding: 10px 0;
+  outline: none;
+  width: 100%;
+  transition: var(--transition-fast);
+}
+
+.calculator-input-element:focus {
+  border-bottom-color: var(--gold);
+}
+
+.calculator-input-element::placeholder {
+  color: var(--charcoal-soft);
+}
+
+.total-area {
+  padding-top: 4px;
+}
+
+.total-area p {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.total-area p span {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .curated-collections-images {
+    grid-template-columns: 1fr 1fr;
+  }
+  .curated-collections-image:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero { background-attachment: scroll; }
+
+  .curated-collections { padding: 64px 5vw; }
+  .curated-collections-top { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .curated-collections-images { grid-template-columns: 1fr; }
+  .curated-collections-image { height: 320px; }
+  .curated-collections-image:last-child { display: block; }
+
+  .company-features { flex-direction: column; }
+  .company-feature + .company-feature::before { display: none; }
+  .company-feature { padding: 48px 32px; border-top: 1px solid var(--border-dark); }
+
+  .tiles-calculator-div { padding: 64px 5vw; }
+  .calculator-and-description { grid-template-columns: 1fr; gap: 48px; }
+
+  .hero-cta-row { flex-direction: column; }
+  .hero-cta-primary, .hero-cta-secondary { width: 100%; text-align: center; }
+}
