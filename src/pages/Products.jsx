@@ -4,12 +4,15 @@ import './Products.css';
 import Header from "../components/Header.jsx";
 import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export default function Products() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('q') || '';
 
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
@@ -45,6 +48,12 @@ export default function Products() {
     setCurrentPage(1);
   };
 
+  // Jump back to page 1 whenever the header search query changes, so a new
+  // search never leaves the user stranded on an out-of-range page.
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
   // Fetch products once from Firestore
   useEffect(() => {
     const fetchProducts = async () => {
@@ -74,17 +83,28 @@ export default function Products() {
     console.log('Products page - Filtering products, current filters:', filters);
     console.log('Products page - Products before filter:', products);
     
+    const query = searchQuery.trim().toLowerCase();
+
     const filtered = products.filter((product) => {
       if (filters.materials.length > 0 && !filters.materials.includes(product.material)) return false;
       if (filters.finishes.length > 0 && !filters.finishes.includes(product.finish)) return false;
       if (filters.colors.length > 0 && !filters.colors.includes(product.colorName)) return false;
       if (Number(product.price) > filters.maxPrice) return false;
+
+      if (query) {
+        const haystack = [product.name, product.material, product.finish, product.colorName, product.origin, product.tag]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
+
       return true;
     });
     
     console.log('Products page - Products after filter:', filtered);
     return filtered;
-  }, [products, filters]);
+  }, [products, filters, searchQuery]);
 
   const sortedProducts = useMemo(() => {
     const list = [...filteredProducts];

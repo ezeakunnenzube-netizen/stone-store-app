@@ -83,11 +83,13 @@ function Header(){
                       value={searchQuery}
                       onChange={(e) => {
                         const value = e.target.value;
+                        // Just keep the "q" query param in sync as the user types.
+                        // Pages showing a product grid (e.g. Products) read this
+                        // param and filter live, without navigating away.
                         if (value) {
-                          setSearchParams({ q: value });
-                          navigate('/search');
+                          setSearchParams({ q: value }, { replace: true });
                         } else {
-                          setSearchParams({});
+                          setSearchParams({}, { replace: true });
                         }
                       }}
                       onKeyDown={(e) => {
