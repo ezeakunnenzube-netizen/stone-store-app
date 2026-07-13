@@ -261,6 +261,23 @@
   padding: 48px 5vw 80px;
 }
 
+/* Ultra-wide / large desktop displays — give the layout room without
+   letting product cards stretch into oversized, low-density tiles */
+@media (min-width: 1601px) {
+  .store-layout-container {
+    max-width: 1680px;
+  }
+
+  .catalog-layout-split {
+    grid-template-columns: 300px 1fr;
+    gap: 56px;
+  }
+
+  .product-flex-row-wrap {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
 /* --------------------------------------------------------------------------
    CATALOG BODY — Sidebar + Main Grid
    -------------------------------------------------------------------------- */
@@ -516,8 +533,8 @@
    -------------------------------------------------------------------------- */
 .product-flex-row-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: clamp(20px, 2.4vw, 32px);
 }
 
 .catalog-product-card {
@@ -527,6 +544,21 @@
   cursor: pointer;
   transition: var(--transition-mid);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  animation: card-fade-in 0.55s var(--ease-luxury) both;
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .catalog-product-card:hover {
@@ -535,13 +567,14 @@
   border-color: rgba(201, 168, 76, 0.3);
 }
 
-/* Image container */
+/* Image container — consistent proportions at every screen size */
 .card-media-wrapper {
   position: relative;
   width: 100%;
-  height: 280px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--pearl);
+  flex-shrink: 0;
 }
 
 .card-media-wrapper img {
@@ -604,6 +637,13 @@
 .card-details {
   padding: 20px 22px 24px;
   border-top: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.details-pricing {
+  margin-top: auto;
 }
 
 .card-details h4 {
@@ -639,6 +679,89 @@
   font-weight: 300;
   color: var(--text-muted);
   letter-spacing: 0.06em;
+}
+
+/* --------------------------------------------------------------------------
+   SKELETON LOADING STATE
+   -------------------------------------------------------------------------- */
+.skeleton-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(100deg, var(--pearl) 30%, #f8f6f0 50%, var(--pearl) 70%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-lines {
+  padding: 20px 22px 24px;
+  border-top: 2px solid var(--border-light);
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(100deg, var(--pearl) 30%, #f8f6f0 50%, var(--pearl) 70%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+  margin-bottom: 12px;
+}
+
+.skeleton-line.w-60 { width: 60%; }
+.skeleton-line.w-40 { width: 40%; height: 18px; margin-top: 8px; margin-bottom: 0; }
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* --------------------------------------------------------------------------
+   EMPTY STATE
+   -------------------------------------------------------------------------- */
+.empty-catalog-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 24px;
+  border: 1px dashed var(--border-mid);
+}
+
+.empty-catalog-state h4 {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--text-primary);
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+
+.empty-catalog-state p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+}
+
+.empty-catalog-state button {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--obsidian);
+  background: transparent;
+  border: 1px solid var(--gold);
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.empty-catalog-state button:hover {
+  background: var(--gold);
 }
 
 /* --------------------------------------------------------------------------
@@ -750,11 +873,9 @@ html, body {
     min-width: 0;
   }
 
-  /* Avoid overly tall rectangles that can cause awkward cropping/partial visibility */
+  /* Consistent proportions — no fixed pixel height, so images never crop awkwardly */
   .card-media-wrapper {
-    height: 240px;
-    min-height: 240px;
-    aspect-ratio: auto;
+    aspect-ratio: 4 / 3;
   }
 }
 
@@ -876,8 +997,9 @@ html, body {
     font-size: 18px;
   }
 }
-/* iPad mini (approx 768px) — ensure full cards fit without clipping */
-@media (max-width: 800px) {
+/* iPad mini (approx 768px) — ensure full cards fit without clipping.
+   Scoped to 601–800px only so it never overrides the ≤600px phone layout above. */
+@media (min-width: 601px) and (max-width: 800px) {
   .store-layout-container {
     padding: 28px 4vw 64px;
   }
@@ -905,8 +1027,7 @@ html, body {
   }
 
   .card-media-wrapper {
-    height: 210px;
-    min-height: 210px;
+    aspect-ratio: 4 / 3;
   }
 
   .pagination-footer-strip {

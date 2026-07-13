@@ -186,18 +186,39 @@ export default function Products() {
             </div>
 
             {loadingProducts ? (
-              <div style={{ color: '#c9a84c', padding: '40px 0', textAlign: 'center' }}>
-                Loading products...
+              <div className="product-flex-row-wrap">
+                {Array.from({ length: itemsPerPage }).map((_, idx) => (
+                  <div key={idx} className="skeleton-card">
+                    <div className="skeleton-media" />
+                    <div className="skeleton-lines">
+                      <div className="skeleton-line w-60" />
+                      <div className="skeleton-line w-40" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : displayedProducts.length === 0 ? (
+              <div className="product-flex-row-wrap">
+                <div className="empty-catalog-state">
+                  <h4>No stones match these filters</h4>
+                  <p>Try widening your price range or clearing a filter to see the full collection.</p>
+                  <button onClick={handleClearAll}>Clear All Filters</button>
+                </div>
               </div>
             ) : (
               <div className="product-flex-row-wrap">
-                {displayedProducts.map((product) => (
-                  <Link key={product.id} to={`/product/${product.id}`} className="catalog-product-card">
+                {displayedProducts.map((product, idx) => (
+                  <Link
+                    key={product.id}
+                    to={`/product/${product.id}`}
+                    className="catalog-product-card"
+                    style={{ animationDelay: `${Math.min(idx, 8) * 0.06}s` }}
+                  >
                     <div className="card-media-wrapper">
                       <span className={`media-badge ${product.tag === 'NEW' ? 'blue-badge' : 'white-badge'}`}>
                         {product.tag}
                       </span>
-                      <img src={product.imageUrl || product.image} alt={product.name} />
+                      <img src={product.imageUrl || product.image} alt={product.name} loading="lazy" />
                     </div>
                     <div className="card-details">
                       <h4>{product.name}</h4>

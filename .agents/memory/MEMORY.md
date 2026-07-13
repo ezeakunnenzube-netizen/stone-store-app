@@ -1,0 +1,1 @@
+- [Overlapping max-width media queries](overlapping-media-queries.md) — later `@media (max-width: N)` blocks silently override earlier smaller-viewport blocks; use explicit min/max ranges.
