@@ -517,7 +517,7 @@ function ManageProductsPanel({ products, loading, errorMessage, onDeleted }) {
           style={{ width: '100%', padding: '12px 16px', fontSize: '16px' }}
         />
       </div>
-      <div className="inquiries-grid-layout" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))' }}>
+      <div className="inquiries-grid-layout manage-products-grid">
         {loading ? (
           <div className="dashboard-loading-state">Loading products...</div>
         ) : errorMessage ? (
