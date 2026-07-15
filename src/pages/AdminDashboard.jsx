@@ -10,7 +10,9 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 export default function AdminDashboard() {
   const [inquiries, setInquiries] = useState([]);
+  const [inquiriesError, setInquiriesError] = useState('');
   const [orders, setOrders] = useState([]);
+  const [ordersError, setOrdersError] = useState('');
   const [activeTab, setActiveTab] = useState('inquiries'); // 'inquiries' | 'orders' | 'add-products' | 'manage-products'
 
   const [products, setProducts] = useState([]);
@@ -29,6 +31,7 @@ export default function AdminDashboard() {
 
   const fetchInquiries = async () => {
     try {
+      setInquiriesError('');
       const q = query(collection(db, 'inquiries'), orderBy('timestamp', 'desc'));
       const querySnapshot = await getDocs(q);
       
@@ -63,11 +66,13 @@ export default function AdminDashboard() {
       setInquiries(inquiriesList);
     } catch (err) {
       console.error('Error fetching inquiries:', err);
+      setInquiriesError(err.message || err.code || 'Could not load inquiries.');
     }
   };
 
   const fetchOrders = async () => {
     try {
+      setOrdersError('');
       const q = query(collection(db, 'orders'), orderBy('timestamp', 'desc'));
       const querySnapshot = await getDocs(q);
       
@@ -100,6 +105,7 @@ export default function AdminDashboard() {
       setOrders(ordersList);
     } catch (err) {
       console.error('Error fetching orders:', err);
+      setOrdersError(err.message || err.code || 'Could not load orders.');
     }
   };
 
@@ -335,7 +341,11 @@ export default function AdminDashboard() {
 
       {activeTab === 'inquiries' && (
         <div className="inquiries-grid-layout">
-          {inquiries.length === 0 ? (
+          {inquiriesError ? (
+            <div className="dashboard-empty-state" style={{ border: '1px solid #ff4444', color: '#ff4444' }}>
+              <p>⚠️ {inquiriesError}</p>
+            </div>
+          ) : inquiries.length === 0 ? (
             <div className="dashboard-empty-state">
               <MessageSquare size={40} style={{ color: '#333', marginBottom: '15px' }} />
               <p>No customer inquiries logged inside the database yet.</p>
@@ -383,7 +393,11 @@ export default function AdminDashboard() {
 
         <div className="inquiries-grid-layout">
 
-          {orders.length === 0 ? (
+          {ordersError ? (
+            <div className="dashboard-empty-state" style={{ border: '1px solid #ff4444', color: '#ff4444' }}>
+              <p>⚠️ {ordersError}</p>
+            </div>
+          ) : orders.length === 0 ? (
             <div className="dashboard-empty-state">
               <ShoppingBag size={40} style={{ color: '#333', marginBottom: '15px' }} />
               <p>No orders received yet.</p>

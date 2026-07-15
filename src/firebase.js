@@ -1,6 +1,6 @@
 // src/firebase.js
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { initializeFirestore, getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 // 🔥 YOUR FIREBASE CONFIG - GET THIS FROM FIREBASE CONSOLE!
@@ -22,9 +22,28 @@ const firebaseConfig = {
   measurementId: "G-57EF6N54R9"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase — reuse the existing app instance if one already
+// exists (this module can be re-evaluated by Vite's dev-mode hot module
+// reload, and initializeApp() throws if called twice for the same app).
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 // Initialize Firestore and Auth
-export const db = getFirestore(app);
+// NOTE: Replit's dev/preview environment proxies requests through an iframe,
+// which can block Firestore's default WebChannel streaming connection
+// ("Could not reach Cloud Firestore backend" timeouts). Auto-detecting long
+// polling falls back to plain HTTP requests when streaming isn't available,
+// which works reliably behind the proxy without slowing things down when
+// streaming *is* available.
+// initializeFirestore() throws "failed-precondition" if Firestore was
+// already started for this app (e.g. after a hot reload) — fall back to
+// getFirestore() in that case to reuse the already-configured instance.
+let firestoreDb;
+try {
+  firestoreDb = initializeFirestore(app, {
+    experimentalAutoDetectLongPolling: true,
+  });
+} catch (err) {
+  firestoreDb = getFirestore(app);
+}
+export const db = firestoreDb;
 export const auth = getAuth(app);
