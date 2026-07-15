@@ -634,7 +634,7 @@ function AddProductsForm({ onAdded }) {
     <div style={{ maxWidth: 720, margin: '0 auto' }}>
       <div className="dashboard-empty-state" style={{ textAlign: 'left', maxWidth: 720, marginTop: 0 }}>
         <h2 style={{ color: '#ffffff', marginBottom: 18 }}>Add Product</h2>
-        <form onSubmit={handleSubmit} className="login-form" style={{ gap: 16 }}>
+        <form onSubmit={handleSubmit} className="login-form add-product-form">
           <div className="form-group">
             <label>Numeric ID (matches /product/:id)</label>
             <input className="tilecalc-input" value={form.id} onChange={(e) => update('id', e.target.value)} type="number" min="0" step="1" placeholder="e.g. 1" required />
@@ -675,13 +675,13 @@ function AddProductsForm({ onAdded }) {
             <input className="tilecalc-input" value={form.tag} onChange={(e) => update('tag', e.target.value)} type="text" placeholder="e.g. NEW" />
           </div>
 
-          <div className="form-group">
+          <div className="form-group full-span">
             <label>Image URL (paste a direct public image link)</label>
             <input className="tilecalc-input" value={form.imageUrl} onChange={(e) => update('imageUrl', e.target.value)} type="url" placeholder="https://.../image.png" required />
           </div>
 
           {form.imageUrl ? (
-            <div className="admin-card-image-wrapper" style={{ height: 120 }}>
+            <div className="admin-card-image-wrapper full-span" style={{ height: 160 }}>
               <img src={form.imageUrl} alt="preview" onError={() => {}} />
             </div>
           ) : null}
@@ -689,7 +689,7 @@ function AddProductsForm({ onAdded }) {
           {error ? <p className="login-error">{error}</p> : null}
           {success ? <p className="login-error" style={{ borderColor: 'rgba(201,168,76,0.35)', color: '#c9a84c', background: 'rgba(201,168,76,0.08)' }}>{success}</p> : null}
 
-          <button className="login-button" type="submit" disabled={submitting}>
+          <button className="login-button full-span" type="submit" disabled={submitting}>
             {submitting ? 'Adding...' : 'Add to Firestore'}
           </button>
         </form>

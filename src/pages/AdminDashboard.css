@@ -58,19 +58,20 @@
 
 .admin-title-row h1 {
   font-family: var(--font-display, 'Playfair Display', serif);
-  font-size: 40px;
+  font-size: clamp(24px, 3vw + 12px, 40px);
   font-weight: 400;
   letter-spacing: 0.05em;
   margin: 0 0 8px 0;
   color: #ffffff;
   text-transform: uppercase;
+  line-height: 1.15;
 }
 
 .admin-title-row span {
   color: #c9a84c;
-  font-size: 10px;
+  font-size: clamp(9px, 0.6vw + 7px, 10px);
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   display: inline-block;
   opacity: 0.8;
@@ -109,8 +110,8 @@
   max-width: 1340px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
+  gap: clamp(16px, 2vw, 28px);
 }
 
 /* --------------------------------------------------------------------------
@@ -120,11 +121,12 @@
   background: #111113;
   border: 1px solid #1c1c1f;
   border-top: 2px solid #c9a84c;
-  padding: 36px;
+  padding: clamp(20px, 2.4vw, 36px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 300px;
+  min-width: 0;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -191,6 +193,9 @@
   font-weight: 300;
   letter-spacing: 0.04em;
   transition: color 0.2s ease;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
 }
 
 .client-email-link:hover {
@@ -222,6 +227,8 @@
   border-left: 2px solid #c9a84c;
   font-weight: 300;
   letter-spacing: 0.01em;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* --------------------------------------------------------------------------
@@ -438,8 +445,15 @@
   max-width: 1340px;
   margin: 0 auto 48px auto;
   display: flex;
-  gap: 16px;
+  gap: clamp(10px, 1.5vw, 16px);
   border-bottom: 1px solid #1c1c1f;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.admin-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .admin-tab {
@@ -459,6 +473,8 @@
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
   transition: all 0.3s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .admin-tab:hover {
@@ -526,7 +542,43 @@
 
 /* Manage Products Grid */
 .manage-products-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
+}
+
+/* Add Product Form — two columns on wide screens */
+.add-product-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+
+.add-product-form .full-span,
+.add-product-form .login-error,
+.add-product-form .login-button {
+  grid-column: 1 / -1;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET (≤1024px) — tighten container, keep multi-column grids
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .admin-dashboard-container {
+    padding: 48px 32px;
+  }
+
+  .admin-header {
+    margin-bottom: 56px;
+  }
+
+  .inquiries-grid-layout,
+  .manage-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+    gap: 20px;
+  }
+
+  .add-product-form {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Responsive Login */
@@ -588,6 +640,19 @@
   .luxury-inquiry-card {
     padding: 24px;
   }
+
+  .add-product-form {
+    grid-template-columns: 1fr;
+  }
+
+  .login-container {
+    min-height: calc(100dvh - 220px);
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 28px 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -606,5 +671,13 @@
 
   .luxury-inquiry-card {
     padding: 18px;
+  }
+
+  .admin-card-image-wrapper {
+    height: 120px;
+  }
+
+  .client-name-title {
+    font-size: 22px;
   }
 }
