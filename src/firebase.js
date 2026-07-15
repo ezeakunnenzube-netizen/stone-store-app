@@ -40,7 +40,11 @@ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 let firestoreDb;
 try {
   firestoreDb = initializeFirestore(app, {
-    experimentalAutoDetectLongPolling: true,
+    // Auto-detection sometimes still picks streaming in this proxied
+    // environment and then times out. Force long polling outright so every
+    // request uses plain HTTP, which reliably gets through the iframe proxy.
+    experimentalForceLongPolling: true,
+    useFetchStreams: false,
   });
 } catch (err) {
   firestoreDb = getFirestore(app);
