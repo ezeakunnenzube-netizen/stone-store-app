@@ -15,9 +15,7 @@ Key areas:
   (project id: `stone-app-f5011`)
 
 ## Known gaps from import
-- `.env` sets `VITE_API_BASE_URL=http://192.168.1.196:5000`, pointing at a local
-  network API that is **not** part of this repository. Anything in the app that
-  calls this URL will not work inside the Replit environment as-is.
+- `.env` sets `VITE_API_BASE_URL=https://stone-store-backend.vercel.app` and `VITE_API_URL=https://stone-store-backend.vercel.app`, pointing to the Vercel backend.
 - No run workflow has been configured yet — the project has not been started or
   verified in this environment. Nothing has been installed or launched.
 
